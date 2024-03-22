@@ -1,0 +1,21 @@
+Index: docker-compose.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>version: '3.3'\nservices:\n  database:\n    image: postgres:16\n    restart: always\n    environment:\n      POSTGRES_USER: 'lostfound_admin'\n      POSTGRES_PASSWORD: 'password'\n      POSTGRES_DB: 'lostfound_bot'\n    networks:\n      - backend\n    ports:\n      - \"5432:5432\"\n    volumes:\n      - database-pg:/var/lib/postgresql/data\n  \n  api:\n    build:\n      context: ./backend\n      dockerfile: ./backend/Dockerfile\n    networks:\n      - backend\n    ports:\n      - \"8080:80\"\n    depends_on:\n      - database\n      - nginx\n    restart: always\n    deploy:\n      replicas: 1\n      resources:\n        limits:\n          memory: 2048M\n        reservations:\n          memory: 1024M\n    environment:\n    - ASPNETCORE_ENVIRONMENT=Production\n  \n  nginx:\n    image: 'jc21/nginx-proxy-manager:latest'\n    restart: unless-stopped\n    ports:\n      # These ports are in format <host-port>:<container-port>\n      - '80:80' # Public HTTP Port\n      - '443:443' # Public HTTPS Port\n      - '81:81' # Admin Web Port\n    networks:\n      - backend\n    volumes:\n      - ./data:/data\n      - ./letsencrypt:/etc/letsencrypt\n\nnetworks:\n  backend:\n    driver: bridge\n\nvolumes:\n  database-pg:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/docker-compose.yaml b/docker-compose.yaml
+--- a/docker-compose.yaml	(revision a66c83fce4c95b589894fb3d6b4fc4a7250d13ba)
++++ b/docker-compose.yaml	(date 1711139978171)
+@@ -36,6 +36,10 @@
+     environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+   
++  bot:
++    build:
++      context: 
++  
+   nginx:
+     image: 'jc21/nginx-proxy-manager:latest'
+     restart: unless-stopped
