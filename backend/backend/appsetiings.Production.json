@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=database;Port=5466;Database=lostfound_bot;User ID=lostfound_admin;Password=password"
-  }
-}

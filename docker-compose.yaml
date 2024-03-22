@@ -34,7 +34,7 @@ services:
         reservations:
           memory: 1024M
     environment:
-    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_ENVIRONMENT=Production
   
   nginx:
     image: 'jc21/nginx-proxy-manager:latest'
