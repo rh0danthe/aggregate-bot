@@ -2,6 +2,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram import types, Dispatcher
 from models.models import AuthState
 from pyrogram import Client
+from keyboards.keyboard import kb_code
 
 api_id = 0
 api_hash = ''
@@ -11,27 +12,23 @@ hash = None
 app = None
 
 
-# @dp.message_handler(commands='auth')
 async def start(message: types.Message):
     await message.reply('Привет, для начала введите свой api_id')
     await AuthState.api_id.set()
 
 
-# @dp.message_handler(state=AuthState.api_id)
 async def get_api_id(message: types.Message, state: FSMContext):
     await state.update_data(api_id=message.text)
     await message.reply('Введите api_hash')
     await AuthState.next()
 
 
-# @dp.message_handler(state=AuthState.api_hash)
 async def get_api_hash(message: types.Message, state: FSMContext):
     await state.update_data(api_hash=message.text)
     await message.reply('Введите номер телефона')
     await AuthState.next()
 
 
-# @dp.message_handler(state=AuthState.phone_number)
 async def get_phone_number(message: types.Message, state: FSMContext):
     global api_id
     global api_hash
@@ -43,7 +40,7 @@ async def get_phone_number(message: types.Message, state: FSMContext):
     api_hash = data['api_hash']
     phone_number = data['phone_number']
     await state.finish()
-    await message.reply('Напишите "Получить код"')
+    await message.reply('Нажмите "Получить код"', reply_markup=kb_code)
     menu = 0
 
 
@@ -61,7 +58,6 @@ async def auth(value, username):
         await app.disconnect()
 
 
-# @dp.message_handler(types.Message)
 async def get_code(message: types.Message):
     global menu
     if menu == 0:
@@ -77,7 +73,7 @@ async def get_code(message: types.Message):
 
 
 def registration_handlers_auth(dp: Dispatcher):
-    dp.register_message_handler(start, commands='auth')
+    dp.register_message_handler(start, lambda msg: msg.text.lower() == 'авторизация')
     dp.register_message_handler(get_api_id, state=AuthState.api_id)
     dp.register_message_handler(get_api_hash, state=AuthState.api_hash)
     dp.register_message_handler(get_phone_number, state=AuthState.phone_number)

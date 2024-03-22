@@ -1,0 +1,10 @@
+from aiogram.types import ReplyKeyboardMarkup
+kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+kb.add('Потерял')
+kb.add('Нашёл')
+kb_auth = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+kb_auth.add('Авторизация')
+kb_code = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+kb_code.add('Получить код')
+kb_skip = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+kb_skip.add('Пропустить')
