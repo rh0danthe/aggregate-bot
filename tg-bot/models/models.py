@@ -16,7 +16,7 @@ class Msgs(BaseModel):
 
 class MsgsFromNatasha(BaseModel):
     flag: bool
-    query: []
+    query: List
     session_string: str
     msgs: List[Msgs]
 
