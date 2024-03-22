@@ -36,6 +36,23 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Production
   
+  bot:
+    build:
+      context: ./tg-bot
+      dockerfile: Dockerfile
+    ports:
+      - "5466:5455"
+    depends_on:
+      - api
+    restart: always
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 1024M
+  
   nginx:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
