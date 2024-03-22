@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 5266
 
-CMD uvicorn main:fast_app --host 127.0.0.1 --port
+CMD uvicorn main:fast_app --host 127.0.0.1 --port 5466
 CMD ["python", "main.py"]
