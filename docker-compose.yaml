@@ -4,24 +4,24 @@ services:
     image: postgres:16
     restart: always
     environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'root'
-      POSTGRES_DB: 'production'
+      POSTGRES_USER: 'lostfound_admin'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'lostfound_bot'
     networks:
       - backend
     ports:
       - "5432:5432"
     volumes:
       - database-pg:/var/lib/postgresql/data
-        
+  
   api:
     build:
-      context: .
-      dockerfile: backend/backend/Dockerfile
+      context: ./backend
+      dockerfile: ./backend/Dockerfile
     networks:
       - backend
     ports:
-        - "8080:80"
+      - "8080:80"
     depends_on:
       - database
       - nginx
@@ -33,7 +33,7 @@ services:
           memory: 2048M
         reservations:
           memory: 1024M
-        
+  
   nginx:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
@@ -47,7 +47,7 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-      
+
 networks:
   backend:
     driver: bridge
