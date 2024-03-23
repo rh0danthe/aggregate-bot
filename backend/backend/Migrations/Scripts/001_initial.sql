@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS "ApprovedMessages" (
     "Keyword" text NOT NULL,
     "Title" text NOT NULL,
     "SessionString" text NOT NULL,
-    "ChatId" int NOT NULL,
-    "MessageId" int NOT NULL,
+    "ChatId" bigint NOT NULL,
+    "MessageId" bigint NOT NULL,
     "IsFound" boolean NOT NULL,
     "Content" text NOT NULL
 );

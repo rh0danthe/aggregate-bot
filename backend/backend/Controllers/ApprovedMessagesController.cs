@@ -25,6 +25,6 @@ public class ApprovedMessagesController : Controller
             return BadRequest(ModelState);
         var res = await _approvedMessagesService.CreateAsync(messages);
         await _bot.PostAsync(res);
-        return Ok();
+        return Ok(res);
     }
 }
