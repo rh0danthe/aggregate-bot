@@ -9,4 +9,3 @@ class MsgsFromBot(BaseModel):
 
 class MsgsFromNlp(MsgsFromBot):
     title: str
-    #Блядь
