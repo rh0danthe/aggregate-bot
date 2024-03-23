@@ -35,6 +35,7 @@ async def get(user_id, query, found):
     app = Client(f'{user_id}')
     await app.connect()
     msgs = []
+    print('fdfdfdfd')
     async for dialog in app.get_dialogs():
         if (dialog.chat.type.value == 'supergroup' or dialog.chat.type.value == 'channel' or
                 dialog.chat.type.value == 'group'):
