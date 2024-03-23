@@ -14,7 +14,6 @@ services:
     volumes:
       - database-pg:/var/lib/postgresql/data
   
-  
   api:
     build:
       context: ./backend
@@ -37,14 +36,14 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Production
   
-  
-  
   bot:
     build:
       context: ./tg-bot
       dockerfile: Dockerfile
     ports:
-      - "88:8443"
+      - "5466:5466"
+    depends_on:
+      - api
     restart: always
     deploy:
       replicas: 1
@@ -53,24 +52,6 @@ services:
           memory: 2048M
         reservations:
           memory: 1024M
-  
-  
-  
-  bot-api:
-    build:
-      context: ./bot-api
-      dockerfile: Dockerfile
-    ports:
-      - "5467:5466"
-    restart: always
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          memory: 2048M
-        reservations:
-          memory: 1024M
-  
   
   nlp:
     build:
