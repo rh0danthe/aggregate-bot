@@ -2,7 +2,6 @@ from typing import List
 from pydantic import BaseModel
 
 
-
 # class Msgs(BaseModel):
 #     title: str
 #     text: str
@@ -22,5 +21,3 @@ class Msgs(BaseModel):
 
 class MsgsFromBack(BaseModel):
     msgs: List[Msgs]
-
-
