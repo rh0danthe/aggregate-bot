@@ -27,6 +27,7 @@ async def send_to_smarta(msgs_from_back: MsgsFromBack):
             chat = await app.get_chat(msgs_from_back.chat_id)
             channel_name = msg.chat.username
             if chat.type.value == 'channel':
+                await app.send_message('me', 'дружок отработал')
                 await app.disconnect()
                 return {'channel_name': channel_name,
                         'first_name': None,
@@ -34,6 +35,7 @@ async def send_to_smarta(msgs_from_back: MsgsFromBack):
                         'text': msgs_from_back.text}
             first_name = msg.from_user.first_name
             contacts = msg.from_user.id
+            await app.send_message('me', 'дружок отработал')
             await app.disconnect()
             return{'channel_name': channel_name,
                    'first_name': first_name,

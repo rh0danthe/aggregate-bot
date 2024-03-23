@@ -23,13 +23,15 @@ public class ApprovedMessagesService : IApprovedMessagesService
         var result = new List<ApprovedMessageResponse>();
         foreach (var message in messages)
         {
-            if ((await _userRepository.GetByIdAsync(message.UserId)) == null)
-                throw new UserNotFoundException("Пользователя с таким айди не существует");
             var dbMessage = new ApprovedMessage()
             {
+                Keyword = message.Keyword,
+                ChatId = message.ChatId,
                 Content = message.Content,
-                Query = message.Query,
-                UserId = message.UserId
+                IsFound = message.IsFound,
+                MessageId = message.MessageId,
+                SessionString = message.SessionString,
+                Title = message.Title
             };
             result.Add(MapToResponse(await _approvedMessagesRepository.CreateAsync(dbMessage)));
         }
@@ -46,10 +48,11 @@ public class ApprovedMessagesService : IApprovedMessagesService
     {
         return new ApprovedMessageResponse()
         {
+            ChatId = message.ChatId,
             Content = message.Content,
-            Query = message.Query,
-            UserId = message.UserId,
-            Id = message.Id
+            MessageId = message.MessageId,
+            SessionString = message.SessionString,
+            Title = message.Title
         };
     }
 }

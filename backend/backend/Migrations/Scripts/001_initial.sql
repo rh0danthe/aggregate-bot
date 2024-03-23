@@ -18,7 +18,11 @@ CREATE TABLE IF NOT EXISTS "MessagesBuffer" (
 
 CREATE TABLE IF NOT EXISTS "ApprovedMessages" (
     "Id" serial PRIMARY KEY,
-    "UserId" int REFERENCES "Users"("Id"),
-    "Query" text NOT NULL,
+    "Keyword" text NOT NULL,
+    "Title" text NOT NULL,
+    "SessionString" text NOT NULL,
+    "ChatId" int NOT NULL,
+    "MessageId" int NOT NULL,
+    "IsFound" boolean NOT NULL,
     "Content" text NOT NULL
 );

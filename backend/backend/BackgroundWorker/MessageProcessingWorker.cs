@@ -36,6 +36,6 @@ public class MessageProcessingWorker  : BackgroundService
     
      private async Task SendMessagesToNeuralAsync(IMessagesBufferRepository messagesBufferRepository) {
         var messages = await messagesBufferRepository.GetAllAsync();
-        await _neuralClient.PostAsync(messages);
+        //await _neuralClient.PostAsync(messages);
      }
 }

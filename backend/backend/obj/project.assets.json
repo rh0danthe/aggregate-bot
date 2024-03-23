@@ -8601,24 +8601,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/admin/.nuget/packages/": {}
+    "C:\\Users\\Рита\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/admin/Hacks/aggregate-bot/backend/backend/backend.csproj",
+      "projectUniqueName": "C:\\Users\\Рита\\Desktop\\гавч\\aggregate-bot\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "/Users/admin/Hacks/aggregate-bot/backend/backend/backend.csproj",
-      "packagesPath": "/Users/admin/.nuget/packages/",
-      "outputPath": "/Users/admin/Hacks/aggregate-bot/backend/backend/obj/",
+      "projectPath": "C:\\Users\\Рита\\Desktop\\гавч\\aggregate-bot\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Рита\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Рита\\Desktop\\гавч\\aggregate-bot\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/admin/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Рита\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8673,20 +8680,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-arm64",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8695,7 +8688,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/admin/.dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

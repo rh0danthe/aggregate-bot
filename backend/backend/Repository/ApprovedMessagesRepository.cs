@@ -17,14 +17,16 @@ public class ApprovedMessagesRepository : IApprovedMessagesRepository
     public async Task<ApprovedMessage> CreateAsync(ApprovedMessage message)
     {
         using var connection = await _factory.CreateAsync();
-        var query = "INSERT INTO \"ApprovedMessages\" (\"Content\", \"UserId\", \"Query\") VALUES(@Content, @UserId, @Query) RETURNING *";
+        var query = "INSERT INTO \"ApprovedMessages\" (\"Content\", \"Keyword\", \"Title\", \"SessionString\", \"ChatId\", " +
+                    "\"MessageId\", \"IsFound\") VALUES(@Content, @Keyword, @Title, @SessionString, @ChatId, " +
+                    "@MessageId, @IsFound) RETURNING *";
         return await connection.QueryFirstOrDefaultAsync<ApprovedMessage>(query, message);
     }
 
     public async Task<ICollection<ApprovedMessage>> GetAllByQueryAsync(string query)
     {
         using var connection = await _factory.CreateAsync();
-        var messages = await connection.QueryAsync<ApprovedMessage>("SELECT * FROM \"ApprovedMessages\" WHERE \"Query\" = @Query", new {Query = query});
+        var messages = await connection.QueryAsync<ApprovedMessage>("SELECT * FROM \"ApprovedMessages\" ", new {Query = query});
         return messages.ToList();
     }
 }

@@ -74,3 +74,4 @@ C:\Users\Рита\Desktop\гавч\aggregate-bot\backend\backend\obj\Debug\net7.
 C:\Users\Рита\Desktop\гавч\aggregate-bot\backend\backend\obj\Debug\net7.0\backend.pdb
 C:\Users\Рита\Desktop\гавч\aggregate-bot\backend\backend\obj\Debug\net7.0\backend.genruntimeconfig.cache
 C:\Users\Рита\Desktop\гавч\aggregate-bot\backend\backend\obj\Debug\net7.0\ref\backend.dll
+C:\Users\Рита\Desktop\гавч\aggregate-bot\backend\backend\bin\Debug\net7.0\appsettings.Production.json

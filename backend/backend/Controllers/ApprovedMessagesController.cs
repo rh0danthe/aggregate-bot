@@ -1,5 +1,6 @@
 ﻿using backend.Dto;
 using backend.Services.Interfaces;
+using backend.Transport;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -9,10 +10,12 @@ namespace backend.Controllers;
 public class ApprovedMessagesController : Controller
 {
     private readonly IApprovedMessagesService _approvedMessagesService;
+    private readonly NeuralClient _bot;
     
-    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService) 
+    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, NeuralClient bot) 
     { 
         _approvedMessagesService = approvedMessagesService;
+        _bot = bot;
     }
 
     [HttpPost]
@@ -20,7 +23,8 @@ public class ApprovedMessagesController : Controller
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        await _approvedMessagesService.CreateAsync(messages);
+        var res = await _approvedMessagesService.CreateAsync(messages);
+        await _bot.PostAsync(res);
         return Ok();
     }
 }
