@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/nlp/app/nlp1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nlp/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/data/database.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nlp/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +108,7 @@
       <workItem from="1711129194038" duration="3520000" />
       <workItem from="1711132735448" duration="7803000" />
       <workItem from="1711141736920" duration="330000" />
-      <workItem from="1711150993566" duration="339000" />
+      <workItem from="1711150993566" duration="952000" />
     </task>
     <servers />
   </component>

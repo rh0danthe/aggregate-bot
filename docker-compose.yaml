@@ -58,7 +58,7 @@ services:
       context: ./nlp
       dockerfile: Dockerfile
     ports:
-      - "5068:5068"
+      - "5068:5070"
     restart: always
     deploy:
       replicas: 1
