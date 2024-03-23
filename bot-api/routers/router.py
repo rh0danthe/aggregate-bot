@@ -7,15 +7,12 @@ router = APIRouter()
 
 @router.post('/send_to_smarta')
 async def send_to_smarta(msgs_from_back: MsgsFromBack):
-    messages = msgs_from_back.msgs
-    print(messages)
-    # for msg in msgs:
-    #     session_string = msg.SessionString
-    #     print(msg)
-    #     app = Client(f'{session_string[5]}', session_string=session_string)
-    #     await app.connect()
-    #     await app.send_message('me', 'дружок отработал')
-    #     await app.disconnect()
+    msgs = msgs_from_back.msgs
+    for msg in msgs:
+        print(msg)
+        # app = Client(f'{session_string[5]}', session_string=session_string)
+        # await app.connect()
+        # await app.send_message('me', 'дружок отработал')
         # async for msg in app.get_chat_history(msgs_from_back.chat_id):
         #     if (((msg.text or msg.caption) != None) and msg.id == msgs_from_back.msg_id):
         #         chat = await app.get_chat(msgs_from_back.chat_id)
