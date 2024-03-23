@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 from models.models import MsgsFromBack
-from pyrogram import Client
+
+from fastapi import Request
 
 router = APIRouter()
-
 
 @router.post('/send_to_smarta')
 async def send_to_smarta(msgs_from_back: MsgsFromBack):

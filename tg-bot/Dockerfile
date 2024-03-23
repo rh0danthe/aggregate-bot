@@ -1,13 +1,13 @@
 FROM python:3.11
 
-WORKDIR /fastapiservice
+WORKDIR /tg-bot
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./requirements.txt /tg-bot/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /tg-bot/requirements.txt
 
 COPY . .
 
-EXPOSE 5466
+EXPOSE 88
 
 CMD ["python", "main.py"]
