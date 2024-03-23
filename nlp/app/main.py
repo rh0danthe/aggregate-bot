@@ -1,11 +1,9 @@
 from typing import Union
 from fastapi import FastAPI
-from . import nlp
+from routers import router
 
 app = FastAPI()
+app.include_router(router)
 
-@app.get("/")
-async def read_root(lost_json: str):
-    return {"lost": nlp.lost(lost_json)}
 
 
