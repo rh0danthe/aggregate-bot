@@ -41,7 +41,7 @@ services:
       context: ./tg-bot
       dockerfile: Dockerfile
     ports:
-      - "5466:5455"
+      - "5466:5466"
     depends_on:
       - api
     restart: always

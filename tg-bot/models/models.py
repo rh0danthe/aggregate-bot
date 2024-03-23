@@ -22,7 +22,7 @@ class Msgs(BaseModel):
 
 
 class MsgsFromBack(BaseModel):
-    msgs = List[Msgs]
+    msgs: List[Msgs]
 
 
 class AuthState(StatesGroup):
