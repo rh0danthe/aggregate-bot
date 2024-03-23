@@ -4,21 +4,23 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-class Msgs(BaseModel):
+# class Msgs(BaseModel):
+#     title: str
+#     text: str
+#     msg_id: int
+#     group_id: int
+#     url: str
+#     nickname: str
+#     contacts: Optional[str] = None
+
+
+class MsgsFromBack(BaseModel):
     title: str
-    text: str
+    chat_id: int
     msg_id: int
-    group_id: int
-    url: str
-    nickname: str
-    contacts: Optional[str] = None
-
-
-class MsgsFromNatasha(BaseModel):
-    flag: bool
-    query: List
     session_string: str
-    msgs: List[Msgs]
+    text: str
+
 
 
 class AuthState(StatesGroup):
