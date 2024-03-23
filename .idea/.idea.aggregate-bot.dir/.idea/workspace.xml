@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/data/database.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlp/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlp/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feature-nlp2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,6 +95,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -99,6 +110,7 @@
       <workItem from="1711129194038" duration="3520000" />
       <workItem from="1711132735448" duration="7803000" />
       <workItem from="1711141736920" duration="330000" />
+      <workItem from="1711150993566" duration="952000" />
     </task>
     <servers />
   </component>
