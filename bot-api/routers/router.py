@@ -7,8 +7,8 @@ router = APIRouter()
 
 @router.post('/send_to_smarta')
 async def send_to_smarta(msgs_from_back: MsgsFromBack):
-    msgs = msgs_from_back.msgs
-    print(msgs)
+    messages = msgs_from_back.msgs
+    print(messages)
     # for msg in msgs:
     #     session_string = msg.SessionString
     #     print(msg)
