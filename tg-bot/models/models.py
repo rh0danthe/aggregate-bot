@@ -13,14 +13,16 @@ from typing import Optional
 #     nickname: str
 #     contacts: Optional[str] = None
 
-
-class MsgsFromBack(BaseModel):
+class Msgs(BaseModel):
     title: str
     chat_id: int
     msg_id: int
     session_string: str
     text: str
 
+
+class MsgsFromBack(BaseModel):
+    msgs = List[Msgs]
 
 
 class AuthState(StatesGroup):

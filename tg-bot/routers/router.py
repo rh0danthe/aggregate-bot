@@ -22,6 +22,7 @@ async def send_to_smarta(msgs_from_back: MsgsFromBack):
     session_string = msgs_from_back.session_string
     app = Client(f'{session_string[5]}', session_string=session_string)
     await app.connect()
+    await app.send_message('me', 'дружок отработал')
     async for msg in app.get_chat_history(msgs_from_back.chat_id):
         if (((msg.text or msg.caption) != None) and msg.id == msgs_from_back.msg_id):
             chat = await app.get_chat(msgs_from_back.chat_id)
