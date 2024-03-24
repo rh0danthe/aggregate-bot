@@ -3,6 +3,8 @@ from aiogram.dispatcher import FSMContext
 from pyrogram import Client
 from keyboards.keyboard import kb_skip, kb
 from models.models import QueryState
+import requests
+import json
 
 
 async def start(message: types.Message):
@@ -42,12 +44,30 @@ async def get(user_id, query, found):
             chat_id = dialog.chat.id
             async for msg in app.get_chat_history(chat_id=chat_id, limit=1):
                 if ((msg.text or msg.caption) != None):
-                    msgs_json = {'text': msg.text or msg.caption, 'msg_id': msg.id, 'group_id': chat_id, 'url': msg.link}
+                    msgs_json = {'text': msg.text or msg.caption, 'msg_id': msg.id, 'group_id': chat_id,
+                                 'url': msg.link}
                     msgs.append(msgs_json)
     session_string = await app.export_session_string()
-    msgs_to_back = {'session_string': session_string, 'msgs': msgs}
+    msgs_to_back = {'session_string': session_string,
+                    'msgs': msgs}
     print(msgs_to_back)  # наверное request'ом запрос тут можно кинуть
     print(session_string)
+    msgs_to_nlp = {'is_found': 0,
+                   'session': '1234556',
+                   'keywords': [
+                       'str'
+                   ],
+                   'msgs': [
+                       {'title': '',
+                        'chat_id': 123,
+                        'message_id': 123,
+                        'content': 'dffsdsfd'
+                        }
+                   ]
+                   }
+    json_data = json.dumps(msgs_to_nlp)
+    response = requests.post('http://nlp:5068/backend/from_bot', data=json_data)
+    print(response)
     await app.disconnect()
 
 

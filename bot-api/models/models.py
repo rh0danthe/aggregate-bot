@@ -15,9 +15,9 @@ class Msgs(BaseModel):
     title: str
     chat_id: int
     msg_id: int
-    session_string: str
     text: str
 
 
 class MsgsFromBack(BaseModel):
+    session_string: str
     msgs: List[Msgs]
