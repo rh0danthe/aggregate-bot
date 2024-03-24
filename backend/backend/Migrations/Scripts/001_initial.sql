@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS "ApprovedMessages" (
     "Id" serial PRIMARY KEY,
-    "Title" text NOT NULL,
+    "Title" text ,
     "SessionString" text NOT NULL,
     "ChatId" bigint NOT NULL,
     "MessageId" bigint NOT NULL,
