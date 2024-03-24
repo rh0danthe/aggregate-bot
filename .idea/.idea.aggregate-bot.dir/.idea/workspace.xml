@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bot-api/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bot-api/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bot-api/models/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bot-api/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bot-api/routers/router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/appsettings.Production.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/appsettings.Production.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/data/database.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/routers/router.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

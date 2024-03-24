@@ -42,8 +42,10 @@ services:
       dockerfile: Dockerfile
     networks: 
       - backend
+    depends_on:
+      - api
     ports:
-      - "5466:5465"
+      - "5466:5466"
     restart: always
     deploy:
       replicas: 1
