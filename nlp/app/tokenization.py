@@ -4,17 +4,20 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
 def preprocess(text, punctuation_marks, morph):
+
     tokens = word_tokenize(text.lower())
     preprocessed_text = []
     for token in tokens:
         if token not in punctuation_marks:
             lemma = morph.parse(token)[0].normal_form
             preprocessed_text.append(lemma)
+    #print(preprocessed_text)
     return preprocessed_text
+
 
 punctuation_marks = ['!', ',', '(', ')', ':', '-', '?', '.', '..', '...', '«', '»',
                          ';', '–', '--']
-keys = ['утерять', 'потерять', 'найти', 'пропасть']
+keys = ['утерять', 'потерять', 'найти', 'пропасть', 'потеряться']
 morph = pymorphy3.MorphAnalyzer()
 
 def check_accord(msgs): #сюда коллекцию
@@ -23,10 +26,13 @@ def check_accord(msgs): #сюда коллекцию
     #возвращается обьект массив потеряшек
     new_msgs = []
     for msg in msgs.msgs:
+        checked = False
         prep_text = preprocess(msg.content, punctuation_marks, morph)
         for word in prep_text:
             if word in keys:
-                new_msgs.append(msg)
+                if not checked:
+                    new_msgs.append(msg)
+                    checked = True
     new_object = msgs
     new_object.msgs = new_msgs
     return new_object
@@ -39,11 +45,11 @@ def check_accord(msgs): #сюда коллекцию
 def check_lost_found(msgs):
     new_msgs = []
     for msg in msgs.msgs:
-        print('msg:', msg.content)
+        #print('msg:', msg.content)
         prep_text = preprocess(msg.content, punctuation_marks, morph)
         for word in prep_text:
             if not msgs.is_found:
-                if word == 'потерять' or word == 'утерять' or word == 'пропасть':
+                if word in ['потерять', 'утерять','пропасть', 'потеряться']:
                     new_msgs.append(msg)
                     break
             else:

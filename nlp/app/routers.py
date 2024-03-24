@@ -15,9 +15,5 @@ async def from_bot(msgs_from_bot: MsgsFromBot): #collection
     accorded = check_accord(msgs_from_bot)
     lost_found = check_lost_found(accorded)
     formed = form_title(lost_found)
-    #print(lost_found)
-    print(formed)
-    json_data = json.dumps(formed)
-    print('penis')
-    #response = requests.post('http://api/backend/approved', data=json_data).json()
+
     return formed
