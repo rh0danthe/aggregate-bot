@@ -1,9 +1,9 @@
-﻿using System.Text.Json.Serialization;
-
-namespace backend.Dto;
+﻿namespace backend.Dto;
 
 public class NeuralRequest
 {
-    [JsonPropertyName("msgs")]
-    public ICollection<Msg> Messages { get; set; }
+    public bool IsFound { get; set; }
+    public string SessionString { get; set; }
+    public string[] Keywords { get; set; }
+    public ICollection<ApprovedMessageRequest> Messages { get; set; }
 }

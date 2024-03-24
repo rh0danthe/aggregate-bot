@@ -10,21 +10,22 @@ namespace backend.Controllers;
 public class ApprovedMessagesController : Controller
 {
     private readonly IApprovedMessagesService _approvedMessagesService;
-    private readonly NeuralClient _bot;
+    private readonly BotClient _bot;
     
-    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, NeuralClient bot) 
+    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, BotClient bot) 
     { 
         _approvedMessagesService = approvedMessagesService;
         _bot = bot;
     }
 
     [HttpPost]
-    public async Task<IActionResult> Upload([FromBody] ICollection<ApprovedMessageRequest> messages)
+    public async Task<IActionResult> Upload([FromBody] NeuralRequest request)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        var res = await _approvedMessagesService.CreateAsync(messages);
-        await _bot.PostAsync(res);
+        await _approvedMessagesService.CreateAsync(request.Messages, request.IsFound, request.SessionString);
+        var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.Keywords, request.SessionString);
+        await _bot.PostAsync(res, request.SessionString);
         return Ok(res);
     }
 }
