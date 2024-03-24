@@ -12,5 +12,6 @@ async def from_bot(msgs_from_bot: MsgsFromBot): #collection
     #сортировка по is_found
     accorded = check_accord(msgs_from_bot)
     lost_found = check_lost_found(accorded)
-    form_title(lost_found)
-    return {"status": ":)"}
+    formed = form_title(lost_found)
+
+    return formed
