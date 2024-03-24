@@ -8,7 +8,7 @@ import requests
 #@app.get("/backend/approved")
 
 router = APIRouter()
-@router.post("/backend/from_bot")
+@router.post("/backend/from_bot", response_model=entities.MsgsFromBot)
 async def from_bot(msgs_from_bot: entities.MsgsFromBot): #collection
     #сортировка по is_found
     accorded = tokenization.check_accord(msgs_from_bot)
