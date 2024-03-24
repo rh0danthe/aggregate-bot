@@ -36,6 +36,23 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Production
   
+  bot-api:
+    build:
+      context: ./bot-api
+      dockerfile: Dockerfile
+    networks: 
+      - backend
+    ports:
+      - "5466:5465"
+    restart: always
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 1024M
+  
   bot:
     build:
       context: ./tg-bot
@@ -43,7 +60,7 @@ services:
     networks:
       - backend
     ports:
-      - "5466:5466"
+      - "88:88"
     depends_on:
       - api
     restart: always
