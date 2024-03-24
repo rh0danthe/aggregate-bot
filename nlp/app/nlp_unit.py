@@ -8,7 +8,7 @@ morph_tagger = natasha.NewsMorphTagger(emb)
 syntax_parser = natasha.NewsSyntaxParser(emb)
 
 def form_title(msgs):
-    #print('JOPA')
+    ms = []
     for msg in msgs.msgs:
         doc = natasha.Doc(msg.content)
         doc.segment(segmenter)
@@ -18,8 +18,14 @@ def form_title(msgs):
 
             if token.rel == "nsubj:pass":
                 msg.title = 'Утеряно: ' + token.text
-
-    return msgs
+        ms.append({'chat_id': msg.chat_id, 
+                   'message_id': msg.message_id, 
+                   'content': msg.content, 
+                   'title': msg.title})
+    return {'is_found': msgs.is_found,
+            'session': msgs.session,
+            'keywords': msgs.keywords,
+            'msgs': ms}
 
 '''doc = natasha.Doc('Потеряна Галина')
 

@@ -4,6 +4,7 @@ from nlp_unit import form_title
 from entities import MsgsFromBot
 from tokenization import check_accord, check_lost_found
 import requests
+import json
 
 #@app.get("/backend/approved")
 
@@ -14,5 +15,9 @@ async def from_bot(msgs_from_bot: MsgsFromBot): #collection
     accorded = check_accord(msgs_from_bot)
     lost_found = check_lost_found(accorded)
     formed = form_title(lost_found)
-    #requests.post('http://api:8080/backend/approved')
-    return formed
+    print(lost_found)
+    print(formed)
+    json_data = json.dumps(formed)
+    print('penis')
+    response = requests.post('http://api/backend/approved', data=json_data).json()
+    return json_data
