@@ -2,7 +2,7 @@
 
 namespace backend.Dto;
 
-public class Request
+public class NeuralRequest
 {
     [JsonPropertyName("msgs")]
     public ICollection<Msg> Messages { get; set; }

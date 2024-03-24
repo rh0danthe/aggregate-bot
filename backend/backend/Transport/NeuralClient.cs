@@ -16,6 +16,18 @@ public class NeuralClient
 
     public async Task PostAsync(ICollection<ApprovedMessageResponse> messages)
     {
-        await _httpClient.PostAsync(_address, JsonContent.Create(messages));
+        var toMsg = messages.Select(msg => new Msg
+        {
+            ChatId = msg.ChatId,
+            MessageId = msg.MessageId,
+            SessionString = msg.SessionString,
+            Title = msg.Title,
+            Text = msg.Content,
+        });
+        var content = JsonContent.Create(new NeuralRequest
+        {
+            Messages = toMsg.ToList()
+        });
+        var res = await _httpClient.PostAsync(_address, content);
     }
 }

@@ -40,6 +40,8 @@ services:
     build:
       context: ./tg-bot
       dockerfile: Dockerfile
+    networks:
+      - backend
     ports:
       - "5466:5466"
     depends_on:
@@ -59,6 +61,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5068:5068"
+    networks:
+      - backend
     restart: always
     deploy:
       replicas: 1

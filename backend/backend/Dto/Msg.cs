@@ -2,7 +2,7 @@
 
 namespace backend.Dto;
 
-public class Response
+public class Msg
 {
     [JsonPropertyName("title")]
     public string Title { get; set; }
