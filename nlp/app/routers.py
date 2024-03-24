@@ -5,6 +5,7 @@ from entities import MsgsFromBot
 from tokenization import check_accord, check_lost_found
 import requests
 import json
+from pydantic import Json
 
 #@app.get("/backend/approved")
 
@@ -15,11 +16,10 @@ async def from_bot(msgs_from_bot: MsgsFromBot): #collection
     accorded = check_accord(msgs_from_bot)
     lost_found = check_lost_found(accorded)
     formed = form_title(lost_found)
-    print(lost_found)
+    #headers = {'Content-type': 'application/json'}
+    
+    response = requests.post('http://api/backend/approved', json=formed)
+    print(response.text)
     print(formed)
-    json_data = json.dumps(formed, ensure_ascii=False, indent=2)
-    print('penis')
-    print(json_data)
-    response = requests.post('http://api/backend/approved', data=formed.json())
-    print(response)
-    return json_data
+    print(type(formed))
+    return response.json()

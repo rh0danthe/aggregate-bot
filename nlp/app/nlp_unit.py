@@ -7,6 +7,7 @@ emb = natasha.NewsEmbedding()
 morph_tagger = natasha.NewsMorphTagger(emb)
 syntax_parser = natasha.NewsSyntaxParser(emb)
 
+
 def form_title(msgs):
     ms = []
     for msg in msgs.msgs:
@@ -18,14 +19,17 @@ def form_title(msgs):
 
             if token.rel == "nsubj:pass":
                 msg.title = 'Утеряно: ' + token.text
-        ms.append({'chat_id': msg.chat_id, 
-                   'message_id': msg.message_id, 
-                   'content': msg.content, 
+        ms.append({'chat_id': msg.chat_id,
+                   'message_id': msg.message_id,
+                   'content': msg.content,
                    'title': msg.title})
-    return {'is_found': msgs.is_found,
-            'session': msgs.session,
-            'keywords': msgs.keywords,
-            'msgs': ms}
+    dd = {'is_found': msgs.is_found,
+          'session': msgs.session,
+          'keywords': msgs.keywords,
+          'msgs': ms}
+    print(type(dd))
+    return dd
+
 
 '''doc = natasha.Doc('Потеряна Галина')
 
