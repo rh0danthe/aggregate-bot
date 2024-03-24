@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI
-import routers
+from . import routers
 
 app = FastAPI()
 app.include_router(routers.router)
