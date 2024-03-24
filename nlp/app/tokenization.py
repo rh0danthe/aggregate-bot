@@ -14,7 +14,7 @@ def preprocess(text, punctuation_marks, morph):
 
 punctuation_marks = ['!', ',', '(', ')', ':', '-', '?', '.', '..', '...', '«', '»',
                          ';', '–', '--']
-keys = ['утерять', 'потерять', 'найти']
+keys = ['утерять', 'потерять', 'найти', 'пропасть']
 morph = pymorphy3.MorphAnalyzer()
 
 def check_accord(msgs): #сюда коллекцию
@@ -39,14 +39,17 @@ def check_accord(msgs): #сюда коллекцию
 def check_lost_found(msgs):
     new_msgs = []
     for msg in msgs.msgs:
+        print('msg:', msg.content)
         prep_text = preprocess(msg.content, punctuation_marks, morph)
         for word in prep_text:
-            if msgs.is_found == 0:
-                if word == 'потерять' or word == 'утерять':
+            if not msgs.is_found:
+                if word == 'потерять' or word == 'утерять' or word == 'пропасть':
                     new_msgs.append(msg)
+                    break
             else:
                 if word == 'найти':
                     new_msgs.append(msg)
+                    break
     new_object = msgs
     new_object.msgs = new_msgs
     return new_object

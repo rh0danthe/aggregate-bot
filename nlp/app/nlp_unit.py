@@ -1,4 +1,7 @@
 import natasha
+import pymorphy3
+
+morph = pymorphy3.MorphAnalyzer()
 
 segmenter = natasha.Segmenter()
 morph_vocab = natasha.MorphVocab()
@@ -15,13 +18,15 @@ def form_title(msgs):
         doc.tag_morph(morph_tagger)
         doc.parse_syntax(syntax_parser)
         for token in doc.sents[0].syntax.tokens:
-
-            if token.rel == "nsubj:pass":
-                msg.title = 'Утеряно: ' + token.text
-        ms.append({'chat_id': msg.chat_id, 
-                   'message_id': msg.message_id, 
-                   'content': msg.content, 
-                   'title': msg.title})
+            #print(msg.content)
+            if token.rel in ["nsubj:pass", "nsubj", "obj"]:
+                msg.title = morph.parse(token.text)[0].normal_form
+                #print(msg.title, token.rel)
+                ms.append({'chat_id': msg.chat_id,
+                           'message_id': msg.message_id,
+                           'content': msg.content,
+                           'title': msg.title})
+                break
     return {'is_found': msgs.is_found,
             'session': msgs.session,
             'keywords': msgs.keywords,
