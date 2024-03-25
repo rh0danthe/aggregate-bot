@@ -23,6 +23,7 @@ public class ApprovedMessagesController : Controller
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
         await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, request.session);
         var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, request.session);
         await _bot.PostAsync(res, request.session);
