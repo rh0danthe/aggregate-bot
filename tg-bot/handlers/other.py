@@ -50,10 +50,16 @@ async def get(user_id, query, found):
                                  'title': ''}
                     msgs.append(msgs_json)
     session_string = await app.export_session_string()
-    msgs_to_back = {'is_found': found,
-                    'session': session_string,
-                    'keywords': query,
-                    'msgs': msgs}
+    if query == '':
+        msgs_to_back = {'is_found': found,
+                        'session': session_string,
+                        'keywords': [],
+                        'msgs': msgs}
+    else:
+        msgs_to_back = {'is_found': found,
+                        'session': session_string,
+                        'keywords': query,
+                        'msgs': msgs}
     # data = json.dumps(msgs_to_back)
     response = requests.post('http://nlp:5068/backend/from_bot', json=msgs_to_back)
     print(response)

@@ -10,6 +10,7 @@ emb = natasha.NewsEmbedding()
 morph_tagger = natasha.NewsMorphTagger(emb)
 syntax_parser = natasha.NewsSyntaxParser(emb)
 
+
 def form_title(msgs):
     ms = []
     for msg in msgs.msgs:
@@ -18,18 +19,23 @@ def form_title(msgs):
         doc.tag_morph(morph_tagger)
         doc.parse_syntax(syntax_parser)
 
-
         for token in doc.sents[0].syntax.tokens:
-            #print(token.text, token.rel)
+            # print(token.text, token.rel)
 
-            if token.rel in ["nsubj:pass", "nsubj", "obj"] :
-                if morph.parse(token.text)[0].normal_form in msgs.keywords:
-                    msg.title = morph.parse(token.text)[0].normal_form
+            if token.rel in ["nsubj:pass", "nsubj", "obj"]:
+                if msgs.keywords == []:
                     ms.append({'chat_id': msg.chat_id,
                                'message_id': msg.message_id,
                                'content': msg.content,
-                               'title': msg.title,})
-        print (msg)
+                               'title': msg.title})
+                else:
+                    if morph.parse(token.text)[0].normal_form in msgs.keywords:
+                        msg.title = morph.parse(token.text)[0].normal_form
+                        ms.append({'chat_id': msg.chat_id,
+                                   'message_id': msg.message_id,
+                                   'content': msg.content,
+                                   'title': msg.title, })
+        print(msg)
     print(ms)
     return {'is_found': msgs.is_found,
             'session': msgs.session,

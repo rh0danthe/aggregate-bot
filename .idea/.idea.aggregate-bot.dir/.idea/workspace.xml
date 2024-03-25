@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/appsettings.Production.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/appsettings.Production.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/data/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlp/app/nlp_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/app/nlp_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/handlers/other.py" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/handlers/other.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +25,17 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-nlp2" />
+        <entry key="$PROJECT_DIR$" value="feature-sortt" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/backend/backend/Controllers/ApprovedMessagesController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/backend/Entities/ApprovedMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/backend/Factories/DefaultDbConnectionFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/backend/Middleware/ExceptionMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/backend/Models/ErrorDetails.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/backend/backend/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="JsbtTreeLayoutManager">
@@ -53,7 +57,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "featuer-bot-api",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/admin/Hacks/aggregate-bot",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -94,6 +98,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yaml.bot: Compose Deployment" />
