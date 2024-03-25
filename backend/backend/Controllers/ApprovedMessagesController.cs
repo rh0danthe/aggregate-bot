@@ -10,11 +10,13 @@ namespace backend.Controllers;
 public class ApprovedMessagesController : Controller
 {
     private readonly IApprovedMessagesService _approvedMessagesService;
+    private readonly IUserService _userService;
     private readonly BotClient _bot;
     
-    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, BotClient bot) 
+    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, IUserService userService, BotClient bot) 
     { 
         _approvedMessagesService = approvedMessagesService;
+        _userService = userService;
         _bot = bot;
     }
 
@@ -24,8 +26,10 @@ public class ApprovedMessagesController : Controller
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, request.session);
-        var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, request.session);
+        var user = await _userService.CreateAsync(request.session);
+        await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, user.Id);
+        var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, user.Id);
+
         await _bot.PostAsync(res, request.session);
         return Ok(res);
     }
