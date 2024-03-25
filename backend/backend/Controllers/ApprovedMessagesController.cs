@@ -25,10 +25,10 @@ public class ApprovedMessagesController : Controller
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        var user = await _userService.CreateAsync(request.session);
+        var user = await _userService.CreateAsync(request.session, request.tgId, request.name);
         await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, user.Id);
         var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, user.Id);
-        await _bot.PostAsync(res, request.session);
+        //await _bot.PostAsync(res, request.session);
         return Ok(res);
     }
-}
+}   

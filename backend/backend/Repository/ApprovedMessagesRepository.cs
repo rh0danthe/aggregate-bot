@@ -18,8 +18,9 @@ public class ApprovedMessagesRepository : IApprovedMessagesRepository
     {
         using var connection = await _factory.CreateAsync();
         var query = "INSERT INTO \"ApprovedMessages\" (\"Content\", \"Title\", \"ChatId\", " +
-                    "\"MessageId\", \"IsFound\", \"UserId\") VALUES(@Content, @Title, @ChatId, " +
-                    "@MessageId, @IsFound, @UserId) RETURNING *";
+                    "\"MessageId\", \"IsFound\", \"UserId\", \"ChatName\", \"SenderName\", \"SenderContacts\") " +
+                    "VALUES(@Content, @Title, @ChatId, " +
+                    "@MessageId, @IsFound, @UserId, @ChatName, @SenderName, @SenderContacts) RETURNING *";
         return await connection.QueryFirstOrDefaultAsync<ApprovedMessage>(query, message);
     }
 

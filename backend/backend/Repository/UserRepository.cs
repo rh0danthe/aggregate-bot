@@ -17,7 +17,8 @@ public class UserRepository : IUserRepository
     public async Task<User> CreateAsync(User user)
     {
         using var connection = await _factory.CreateAsync();
-        var query = "INSERT INTO \"Users\" (\"SessionString\") VALUES(@SessionString) RETURNING *";
+        var query = "INSERT INTO \"Users\" (\"SessionString\", \"TgId\", \"Name\") " +
+                    "VALUES(@SessionString, @TgId, @Name) RETURNING *";
         return await connection.QueryFirstOrDefaultAsync<User>(query, user);
     }
 }

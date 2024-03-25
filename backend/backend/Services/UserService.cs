@@ -13,11 +13,13 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }  
     
-    public async Task<User> CreateAsync(string sessionString)
+    public async Task<User> CreateAsync(string sessionString, long tgId, string name)
     {
         var dbUser = new User()
         {
-            SessionString = sessionString
+            SessionString = sessionString,
+            TgId = tgId,
+            Name = name
         };
         return await _userRepository.CreateAsync(dbUser);
     }

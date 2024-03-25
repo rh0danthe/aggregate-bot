@@ -14,9 +14,9 @@ public class ApprovedMessagesService : IApprovedMessagesService
         _approvedMessagesRepository = approvedMessagesRepository;
     }
     
-    public async Task<ICollection<ApprovedMessageResponse>> CreateAsync(ICollection<ApprovedMessageRequest> messages, bool isFound, int userId)
+    public async Task<ICollection<Msg>> CreateAsync(ICollection<ApprovedMessageRequest> messages, bool isFound, int userId)
     {
-        var result = new List<ApprovedMessageResponse>();
+        var result = new List<Msg>();
         foreach (var message in messages)
         {
             var dbMessage = new ApprovedMessage()
@@ -26,14 +26,17 @@ public class ApprovedMessagesService : IApprovedMessagesService
                 Content = message.content,
                 MessageId = message.message_id,
                 Title = message.title,
-                IsFound = isFound
+                IsFound = isFound,
+                ChatName = message.ChatName,
+                SenderContacts = message.SenderContacts,
+                SenderName = message.SenderName
             };
             result.Add(MapToResponse(await _approvedMessagesRepository.CreateAsync(dbMessage)));
         }
         return result;
     }
 
-    public async Task<ICollection<ApprovedMessageResponse>> GetAllByKeywordsAsync(string[] keywords, int userId)
+    public async Task<ICollection<Msg>> GetAllByKeywordsAsync(string[] keywords, int userId)
     {
         if (keywords.Length == 0)
         {
@@ -44,14 +47,17 @@ public class ApprovedMessagesService : IApprovedMessagesService
         return messages.Select(MapToResponse).ToList();
     }
 
-    private ApprovedMessageResponse MapToResponse(ApprovedMessage message)
+    private Msg MapToResponse(ApprovedMessage message)
     {
-        return new ApprovedMessageResponse()
+        return new Msg()
         {
             ChatId = message.ChatId,
             Content = message.Content,
             MessageId = message.MessageId,
-            Title = message.Title
+            Title = message.Title,
+            ChatName = message.ChatName,
+            SenderContacts = message.SenderContacts,
+            SenderName = message.SenderName
         };
     }
 }

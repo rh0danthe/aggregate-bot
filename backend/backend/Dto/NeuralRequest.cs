@@ -13,6 +13,12 @@ public class NeuralRequest
     [JsonPropertyName("keywords")]
     public string[] keywords { get; set; }
     
+    [JsonPropertyName("tgId")]
+    public long tgId { get; set; }
+    
+    [JsonPropertyName("name")]
+    public string name { get; set; }
+    
     [JsonPropertyName("msgs")]
     public ICollection<ApprovedMessageRequest> msgs { get; set; }
 }

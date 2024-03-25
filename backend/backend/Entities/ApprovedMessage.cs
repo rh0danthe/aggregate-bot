@@ -8,6 +8,11 @@ public class ApprovedMessage
     public bool IsFound { get; set; }
     public long ChatId { get; set; }
     public long MessageId { get; set; }
-    public string SessionString { get; set; }
     public string Content { get; set; }
+    
+    public string SenderName { get; set; }
+    
+    public string SenderContacts { get; set; }
+    
+    public string ChatName { get; set; }
 }
