@@ -7,10 +7,9 @@ router = APIRouter()
 
 @router.post('/send_to_smarta')
 async def send_to_smarta(msgs_from_back: MsgsFromBack):
+    print('sadfaafddgfd')
     msgs = msgs_from_back.msgs
     session_string = msgs_from_back.session_string
-    print(session_string)
-    print(msgs)
     app = Client(f'{session_string[5]}', session_string=session_string)
     await app.connect()
     for msg in msgs:

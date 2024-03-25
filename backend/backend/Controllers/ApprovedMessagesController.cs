@@ -21,13 +21,10 @@ public class ApprovedMessagesController : Controller
     [HttpPost]
     public async Task<IActionResult> Upload([FromBody] NeuralRequest request)
     {
-        Console.WriteLine("Error blyad");
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        //Console.WriteLine("PENIIIIIIIIIIIIIIIIIS");
         var res = await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, request.session);
         //var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, request.session);
-       // Console.WriteLine("PENIIIIIIIIIIIIIIIIIS");
         await _bot.PostAsync(res, request.session);
         Console.WriteLine("We did it");
         return Ok(res);
