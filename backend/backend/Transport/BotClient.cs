@@ -11,7 +11,7 @@ public class BotClient
     public BotClient(IConfiguration configuration)
     {
         _httpClient = new HttpClient();
-        _address = configuration.GetSection("Microservices")["bot"];
+        _address = configuration.GetSection("Microservices")["bot-api"];
     }
 
     public async Task PostAsync(ICollection<ApprovedMessageResponse> messages, string sessionString)

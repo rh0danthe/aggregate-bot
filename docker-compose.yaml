@@ -80,6 +80,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5068:5068"
+    depends_on:
+      - api
     networks:
       - backend
     restart: always

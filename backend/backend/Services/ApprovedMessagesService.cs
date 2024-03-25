@@ -21,11 +21,11 @@ public class ApprovedMessagesService : IApprovedMessagesService
         {
             var dbMessage = new ApprovedMessage()
             {
-                ChatId = message.ChatId,
-                Content = message.Content,
-                MessageId = message.MessageId,
+                ChatId = message.chat_id,
+                Content = message.content,
+                MessageId = message.message_id,
                 SessionString = sessionString,
-                Title = message.Title,
+                Title = message.title,
                 IsFound = isFound
             };
             result.Add(MapToResponse(await _approvedMessagesRepository.CreateAsync(dbMessage)));
