@@ -29,6 +29,7 @@ public class ApprovedMessagesController : Controller
         await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, user.Id);
         var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, user.Id);
         //await _bot.PostAsync(res, request.session);
+
         return Ok(res);
     }
 }   

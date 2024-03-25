@@ -28,8 +28,9 @@ def form_title(msgs):
                     ms.append({'chat_id': msg.chat_id,
                                'message_id': msg.message_id,
                                'content': msg.content,
-                               'title': msg.title})
+                               'title': msg.title,})
         print (msg)
+    print(ms)
     return {'is_found': msgs.is_found,
             'session': msgs.session,
             'keywords': msgs.keywords,
