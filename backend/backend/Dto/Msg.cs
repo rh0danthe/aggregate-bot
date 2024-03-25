@@ -13,9 +13,6 @@ public class Msg
     [JsonPropertyName("msg_id")]
     public long MessageId { get; set; }
     
-    [JsonPropertyName("session_string")]
-    public string SessionString { get; set; }
-    
     [JsonPropertyName("text")]
-    public string Text { get; set; }
+    public string Content { get; set; }
 }

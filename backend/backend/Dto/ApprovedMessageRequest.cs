@@ -1,12 +1,19 @@
-﻿namespace backend.Dto;
+﻿using System.Text.Json.Serialization;
+
+namespace backend.Dto;
 
 public class ApprovedMessageRequest
 {
-    public string Keyword { get; set; }
-    public string Title { get; set; }
-    public bool IsFound { get; set; }
-    public long ChatId { get; set; }
-    public long MessageId { get; set; }
-    public string SessionString { get; set; }
-    public string Content { get; set; }
+    
+    [JsonPropertyName("chat_id")]
+    public long chat_id { get; set; }
+    
+    [JsonPropertyName("message_id")]
+    public long message_id { get; set; }
+    
+    [JsonPropertyName("content")]
+    public string content { get; set; }
+    
+    [JsonPropertyName("title")]
+    public string title { get; set; }
 }

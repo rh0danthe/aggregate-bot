@@ -1,5 +1,4 @@
 using System.Reflection;
-using backend.BackgroundWorker;
 using backend.Factories;
 using backend.Factories.Interfaces;
 using backend.Middleware;
@@ -22,23 +21,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<MessageStorageQueue>();
-builder.Services.AddHostedService<MessageProcessingWorker>();
-
 builder.Services.AddSingleton<IDbConnectionFactory, DefaultDbConnectionFactory>();
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IMessageRepository, MessageRepository>();
-builder.Services.AddScoped<IMessagesBufferRepository, MessagesBufferRepository>();
 builder.Services.AddScoped<IApprovedMessagesRepository, ApprovedMessagesRepository>();
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IApprovedMessagesService, ApprovedMessagesService>();
 
 builder.Services.AddScoped<ExceptionMiddleware>();
 
-builder.Services.AddSingleton<NeuralClient>();
+builder.Services.AddSingleton<BotClient>();
 
 var app = builder.Build();
 
@@ -48,8 +39,6 @@ app.UseSwaggerUI();
 app.Migrate<Program>();
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

@@ -1,11 +1,19 @@
 from pydantic import *
-class MsgsFromBot(BaseModel):
-    is_found: bool
+from typing import List
+
+
+class Msg(BaseModel):
     chat_id: int
     message_id: int
-    session: str
     content: str
-    keywords: list[str]
-
-class MsgsFromNlp(MsgsFromBot):
     title: str
+
+
+class MsgsFromBot(BaseModel):
+    is_found: bool
+    session: str
+    keywords: List[str]
+    msgs: List[Msg]
+
+
+

@@ -10,21 +10,26 @@ namespace backend.Controllers;
 public class ApprovedMessagesController : Controller
 {
     private readonly IApprovedMessagesService _approvedMessagesService;
-    private readonly NeuralClient _bot;
+    private readonly BotClient _bot;
     
-    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, NeuralClient bot) 
+    public ApprovedMessagesController(IApprovedMessagesService approvedMessagesService, BotClient bot) 
     { 
         _approvedMessagesService = approvedMessagesService;
         _bot = bot;
     }
 
     [HttpPost]
-    public async Task<IActionResult> Upload([FromBody] ICollection<ApprovedMessageRequest> messages)
+    public async Task<IActionResult> Upload([FromBody] NeuralRequest request)
     {
+        Console.WriteLine("Error blyad");
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        var res = await _approvedMessagesService.CreateAsync(messages);
-        await _bot.PostAsync(res);
+        //Console.WriteLine("PENIIIIIIIIIIIIIIIIIS");
+        var res = await _approvedMessagesService.CreateAsync(request.msgs, request.is_found, request.session);
+        //var res = await _approvedMessagesService.GetAllByKeywordsAsync(request.keywords, request.session);
+       // Console.WriteLine("PENIIIIIIIIIIIIIIIIIS");
+        await _bot.PostAsync(res, request.session);
+        Console.WriteLine("We did it");
         return Ok(res);
     }
 }

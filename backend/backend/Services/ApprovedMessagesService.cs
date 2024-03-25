@@ -1,7 +1,5 @@
 ﻿using backend.Dto;
 using backend.Entities;
-using backend.Exceptions.Shared;
-using backend.Exceptions.User;
 using backend.Repository.Interfaces;
 using backend.Services.Interfaces;
 
@@ -10,37 +8,36 @@ namespace backend.Services;
 public class ApprovedMessagesService : IApprovedMessagesService
 {
     private readonly IApprovedMessagesRepository _approvedMessagesRepository;
-    private readonly IUserRepository _userRepository;
 
-    public ApprovedMessagesService(IApprovedMessagesRepository approvedMessagesRepository, IUserRepository userRepository)
+    public ApprovedMessagesService(IApprovedMessagesRepository approvedMessagesRepository)
     {
         _approvedMessagesRepository = approvedMessagesRepository;
-        _userRepository = userRepository;
     }
     
-    public async Task<ICollection<ApprovedMessageResponse>> CreateAsync(ICollection<ApprovedMessageRequest> messages)
+    public async Task<ICollection<ApprovedMessageResponse>> CreateAsync(ICollection<ApprovedMessageRequest> messages, bool isFound, string  sessionString)
     {
         var result = new List<ApprovedMessageResponse>();
         foreach (var message in messages)
         {
             var dbMessage = new ApprovedMessage()
             {
-                Keyword = message.Keyword,
-                ChatId = message.ChatId,
-                Content = message.Content,
-                IsFound = message.IsFound,
-                MessageId = message.MessageId,
-                SessionString = message.SessionString,
-                Title = message.Title
+                ChatId = message.chat_id,
+                Content = message.content,
+                MessageId = message.message_id,
+                SessionString = sessionString,
+                Title = message.title,
+                IsFound = isFound
             };
             result.Add(MapToResponse(await _approvedMessagesRepository.CreateAsync(dbMessage)));
         }
         return result;
     }
 
-    public async Task<ICollection<ApprovedMessageResponse>> GetAllByQueryAsync(string query)
+    public async Task<ICollection<ApprovedMessageResponse>> GetAllByKeywordsAsync(string[] keywords, string sessionString)
     {
-        var messages = await _approvedMessagesRepository.GetAllByQueryAsync(query);
+        if (keywords.Length == 0)
+            return new List<ApprovedMessageResponse>();
+        var messages = await _approvedMessagesRepository.GetAllByQueryAsync(keywords, sessionString);
         return messages.Select(MapToResponse).ToList();
     }
 
@@ -51,7 +48,6 @@ public class ApprovedMessagesService : IApprovedMessagesService
             ChatId = message.ChatId,
             Content = message.Content,
             MessageId = message.MessageId,
-            SessionString = message.SessionString,
             Title = message.Title
         };
     }
