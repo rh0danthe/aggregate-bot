@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlp/app/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/app/routers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -39,6 +39,6 @@ async def from_bot(msgs_from_bot: MsgsFromBot):  # collection
     #              'contacts': contacts,
     #             'text': msg.text}
 
-    response = requests.post('https://api/backend/approved', json=formed, verify=False)
+    response = requests.post('http://api/backend/approved', json=formed, verify=False)
     print(formed)
     return response.json()
