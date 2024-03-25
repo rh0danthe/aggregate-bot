@@ -14,17 +14,17 @@ public class ApprovedMessagesService : IApprovedMessagesService
         _approvedMessagesRepository = approvedMessagesRepository;
     }
     
-    public async Task<ICollection<ApprovedMessageResponse>> CreateAsync(ICollection<ApprovedMessageRequest> messages, bool isFound, string  sessionString)
+    public async Task<ICollection<ApprovedMessageResponse>> CreateAsync(ICollection<ApprovedMessageRequest> messages, bool isFound, int userId)
     {
         var result = new List<ApprovedMessageResponse>();
         foreach (var message in messages)
         {
             var dbMessage = new ApprovedMessage()
             {
+                UserId = userId,
                 ChatId = message.chat_id,
                 Content = message.content,
                 MessageId = message.message_id,
-                SessionString = sessionString,
                 Title = message.title,
                 IsFound = isFound
             };
@@ -33,11 +33,14 @@ public class ApprovedMessagesService : IApprovedMessagesService
         return result;
     }
 
-    public async Task<ICollection<ApprovedMessageResponse>> GetAllByKeywordsAsync(string[] keywords, string sessionString)
+    public async Task<ICollection<ApprovedMessageResponse>> GetAllByKeywordsAsync(string[] keywords, int userId)
     {
         if (keywords.Length == 0)
-            return new List<ApprovedMessageResponse>();
-        var messages = await _approvedMessagesRepository.GetAllByQueryAsync(keywords, sessionString);
+        {
+            var withoutKeywords = await _approvedMessagesRepository.GetAllByUserAsync(userId);
+            return withoutKeywords.Select(MapToResponse).ToList();
+        }
+        var messages = await _approvedMessagesRepository.GetAllByQueryAsync(keywords, userId);
         return messages.Select(MapToResponse).ToList();
     }
 

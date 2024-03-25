@@ -3,6 +3,7 @@
 public class ApprovedMessage
 {
     public int Id { get; set; }
+    public int UserId  { get; set; }
     public string Title { get; set; }
     public bool IsFound { get; set; }
     public long ChatId { get; set; }

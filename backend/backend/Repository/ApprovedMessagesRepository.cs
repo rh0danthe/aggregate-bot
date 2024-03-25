@@ -17,13 +17,13 @@ public class ApprovedMessagesRepository : IApprovedMessagesRepository
     public async Task<ApprovedMessage> CreateAsync(ApprovedMessage message)
     {
         using var connection = await _factory.CreateAsync();
-        var query = "INSERT INTO \"ApprovedMessages\" (\"Content\", \"Title\", \"SessionString\", \"ChatId\", " +
-                    "\"MessageId\", \"IsFound\") VALUES(@Content, @Title, @SessionString, @ChatId, " +
-                    "@MessageId, @IsFound) RETURNING *";
+        var query = "INSERT INTO \"ApprovedMessages\" (\"Content\", \"Title\", \"ChatId\", " +
+                    "\"MessageId\", \"IsFound\", \"UserId\") VALUES(@Content, @Title, @ChatId, " +
+                    "@MessageId, @IsFound, @UserId) RETURNING *";
         return await connection.QueryFirstOrDefaultAsync<ApprovedMessage>(query, message);
     }
 
-    public async Task<ICollection<ApprovedMessage>> GetAllByQueryAsync(string[] keywords, string sessionString)
+    public async Task<ICollection<ApprovedMessage>> GetAllByQueryAsync(string[] keywords, int userId)
     {
         using var connection = await _factory.CreateAsync();
 
@@ -35,13 +35,23 @@ public class ApprovedMessagesRepository : IApprovedMessagesRepository
             parameters.Add($"key{i}", keywords[i]);
         }
 
-        parameters.Add("sessionString", sessionString);
+        parameters.Add("userId", userId);
 
         var sqlQuery =
-            $"SELECT * FROM \"ApprovedMessages\" WHERE \"Title\" IN ({inParameters}) AND \"SessionString\" = @sessionString";
+            $"SELECT * FROM \"ApprovedMessages\" WHERE \"Title\" IN ({inParameters}) AND \"UserId\" = @userId";
 
         var messages = await connection.QueryAsync<ApprovedMessage>(sqlQuery, parameters);
         return messages.ToList();
 
+    }
+
+    public async Task<ICollection<ApprovedMessage>> GetAllByUserAsync(int userId)
+    {
+        using var connection = await _factory.CreateAsync();
+        var sqlQuery =
+            $"SELECT * FROM \"ApprovedMessages\" WHERE \"UserId\" = @userId";
+
+        var messages = await connection.QueryAsync<ApprovedMessage>(sqlQuery, new {UserId = userId});
+        return messages.ToList();
     }
 }

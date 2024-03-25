@@ -24,8 +24,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IDbConnectionFactory, DefaultDbConnectionFactory>();
 
 builder.Services.AddScoped<IApprovedMessagesRepository, ApprovedMessagesRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<IApprovedMessagesService, ApprovedMessagesService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<ExceptionMiddleware>();
 
