@@ -24,7 +24,6 @@ services:
       - "8080:80"
     depends_on:
       - database
-      - nginx
     restart: always
     deploy:
       replicas: 1
