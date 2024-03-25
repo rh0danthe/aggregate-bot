@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 services:
   database:
     image: postgres:16
@@ -93,19 +93,19 @@ services:
         reservations:
           memory: 1024M
           
-#  nginx:
-#    image: 'jc21/nginx-proxy-manager:latest'
-#    restart: unless-stopped
-#    ports:
-#      # These ports are in format <host-port>:<container-port>
-#      - '80:80' # Public HTTP Port
-#      - '81:81' # Admin Web Port
-#      - '443:443' # Public HTTPS Port
-#    networks:
-#      - backend
-#    volumes:
-#      - ./data:/data
-#      - ./letsencrypt:/etc/letsencrypt
+  nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - '80:80' # Public HTTP Port
+      - '81:81' # Admin Web Port
+      - '443:443' # Public HTTPS Port
+    networks:
+      - backend
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
 
 networks:
   backend:
