@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="def51c2f-edce-4c83-a79a-712515381598" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.aggregate-bot.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/data/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp/app/nlp_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp/app/nlp_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot-api/routers/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot-api/routers/router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/handlers/other.py" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/handlers/other.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

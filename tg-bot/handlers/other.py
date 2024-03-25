@@ -42,7 +42,7 @@ async def get(user_id, query, found):
         if (dialog.chat.type.value == 'supergroup' or dialog.chat.type.value == 'channel' or
                 dialog.chat.type.value == 'group'):
             chat_id = dialog.chat.id
-            async for msg in app.get_chat_history(chat_id=chat_id, limit=6):
+            async for msg in app.get_chat_history(chat_id=chat_id, limit=30):
                 if ((msg.text or msg.caption) != None):
                     msgs_json = {'chat_id': chat_id,
                                  'message_id': msg.id,
